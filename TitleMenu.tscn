@@ -1,0 +1,170 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://PlayButton.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemies/slimeBlue.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/platformChar_happy.png" type="Texture" id=3]
+[ext_resource path="res://assets/UI/grey_button04.png" type="Texture" id=4]
+[ext_resource path="res://assets/UI/grey_button13.png" type="Texture" id=5]
+[ext_resource path="res://assets/more fonts/KiriFont.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/music/Swinging Pants.ogg" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+outline_size = 2
+outline_color = Color( 0.141176, 0.384314, 0.105882, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.866667, 0.929412, 0.305882, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 55
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.313726, 0.839216, 0.235294, 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 35
+font_data = ExtResource( 6 )
+
+[node name="TitleMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.27451, 0.980392, 0.643137, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 160.0
+margin_top = 96.0
+margin_right = 910.0
+margin_bottom = 167.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.980392, 0.631373, 0.137255, 1 )
+text = "New Platformer"
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 32.0
+margin_top = 320.0
+margin_right = 448.0
+margin_bottom = 576.0
+theme = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+margin_left = 32.0
+margin_top = 192.0
+margin_right = 222.0
+margin_bottom = 237.0
+theme = SubResource( 4 )
+texture = ExtResource( 4 )
+
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+margin_left = 32.0
+margin_top = 128.0
+margin_right = 81.0
+margin_bottom = 173.0
+theme = SubResource( 4 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect3" type="TextureRect" parent="Panel"]
+margin_left = 256.0
+margin_top = 96.0
+margin_right = 320.0
+margin_bottom = 160.0
+theme = SubResource( 4 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 288.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.313726, 0.839216, 0.235294, 1 )
+text = "Player"
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 576.0
+margin_top = 320.0
+margin_right = 992.0
+margin_bottom = 576.0
+theme = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel2"]
+margin_left = 32.0
+margin_top = 192.0
+margin_right = 222.0
+margin_bottom = 237.0
+theme = SubResource( 4 )
+texture = ExtResource( 4 )
+
+[node name="TextureRect2" type="TextureRect" parent="Panel2"]
+margin_left = 32.0
+margin_top = 128.0
+margin_right = 81.0
+margin_bottom = 173.0
+theme = SubResource( 4 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect3" type="TextureRect" parent="Panel2"]
+margin_left = 256.0
+margin_top = 128.0
+margin_right = 320.0
+margin_bottom = 162.0
+theme = SubResource( 4 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Panel2"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 288.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.313726, 0.839216, 0.235294, 1 )
+text = "Player"
+
+[node name="PlayButton" type="Button" parent="."]
+anchor_left = 0.062
+anchor_right = 0.062
+margin_left = 352.512
+margin_top = 224.0
+margin_right = 544.512
+margin_bottom = 288.0
+theme = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.980392, 0.631373, 0.137255, 1 )
+text = "PLAY !"
+flat = true
+script = ExtResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+autoplay = true
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
